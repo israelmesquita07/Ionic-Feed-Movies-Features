@@ -11,14 +11,14 @@ import { Injectable } from '@angular/core';
 export class MoovieProvider {
 
   private baseUrl = "https://api.themoviedb.org/3";
-  private chaveAPI ="XXXXXXXXXX";
+  private chaveAPI ="XXXXXXXXXXXXXXXXXXXXXXXXXX";
   private urlAPI = this.baseUrl+"/movie/latest?api_key="+this.chaveAPI;
   
   constructor(public http: HttpClient) {
     console.log('Hello MoovieProvider Provider');
   }
    
-   //get method
+   //get method implementation
   public getLatestMovies() {
     console.log(this.urlAPI);
     return this.http.get(this.urlAPI);
