@@ -14,7 +14,7 @@ export class MoovieProvider {
   private baseUrl = "https://api.themoviedb.org/3";
   private chaveAPI = "dfefa0dcb9ee40d95a920753d6e62a44";
   private languageUrl = "&language=pt-BR";
-  private urlAPI = this.baseUrl+"/movie/latest?api_key="+this.chaveAPI+this.languageUrl;
+  private urlAPI = this.baseUrl+"/movie/popular?api_key="+this.chaveAPI+this.languageUrl;
   
   constructor(public http: Http) {
     console.log('Hello MoovieProvider Provider');

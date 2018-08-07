@@ -28,6 +28,9 @@ export class FeedPage {
     hora:6
   };
 
+  public lista_filmes = new Array<any>();
+
+
   public nome_usuario:string =  "Israel do Código";
 
   constructor(
@@ -43,7 +46,9 @@ export class FeedPage {
 
   ionViewDidLoad() {
     this.movieProvider.getLatestMovies().subscribe(data=>{
-      console.log(data);
+      const response = JSON.parse((data as any)._body);
+      this.lista_filmes = response.results;
+      console.log(response);
     }, error=>{
       console.log(error);
     });
