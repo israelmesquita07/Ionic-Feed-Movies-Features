@@ -33,7 +33,7 @@ export class FeedPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private movieProvider: MoovieProvider
+    public movieProvider: MoovieProvider
     ) {
   }
 
