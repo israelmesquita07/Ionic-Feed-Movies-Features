@@ -14,13 +14,21 @@ import { IntroPage } from "../pages/intro/intro";
   ]
 })
 export class MyApp {
-  rootPage:any = IntroPage;
+  rootPage:any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, configProvider: ConfigProvider) {
     platform.ready().then(() => {
       
-      let config = configProvider.getConfigData;
+      let config = configProvider.getConfigData();
       console.log(config);
+
+      if (config == null) {
+        this.rootPage = IntroPage;
+        configProvider.setConfigData(false);
+      }else{
+        this.rootPage = TabsPage;
+      }
+
       statusBar.styleDefault();
       splashScreen.hide();
     });
