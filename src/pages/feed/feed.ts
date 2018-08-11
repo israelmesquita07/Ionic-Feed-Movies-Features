@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { MoovieProvider } from "../../providers/moovie/moovie";
 
 /**
@@ -29,28 +29,63 @@ export class FeedPage {
   };
 
   public lista_filmes = new Array<any>();
-
+  public loader;
+  public refresher;
+  public isRefreshing: boolean = false;
 
   public nome_usuario:string =  "Israel do Código";
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public movieProvider: MoovieProvider
-    ) {
+    public movieProvider: MoovieProvider,
+    public loadingCtrl: LoadingController
+    ) { }
+
+  doRefresh(refresher) {
+      this.refresher = refresher;
+      this.isRefreshing = true;
+      this.carregarFilmes();
+    }
+
+  abrirCarregando() {
+    this.loader = this.loadingCtrl.create({
+      content: "Carregando Filmes..."
+    });
+    this.loader.present();
+  }
+
+  fecharCarregando(){
+    this.loader.dismiss();
   }
 
   public somaDeDoisNUmeros(num1:number, num2:number):void{
     alert(num1+num2);
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter(){
+    this.carregarFilmes();
+  }
+
+  carregarFilmes() {
+    this.abrirCarregando();
     this.movieProvider.getLatestMovies().subscribe(data=>{
       const response = JSON.parse((data as any)._body);
       this.lista_filmes = response.results;
       console.log(response);
+      this.fecharCarregando();
+
+      if (this.isRefreshing) {
+        this.refresher.complete();
+        this.isRefreshing = false;
+      }
     }, error=>{
       console.log(error);
+      this.fecharCarregando();
+      if (this.isRefreshing) {
+        this.refresher.complete();
+        this.isRefreshing = false;
+      }
     });
   }
 
