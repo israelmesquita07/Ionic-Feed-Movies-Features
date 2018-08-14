@@ -2,3 +2,5 @@
 
 First project using ionic. Not completed yet.
 I will complete this week.
+
+#Movie Details
