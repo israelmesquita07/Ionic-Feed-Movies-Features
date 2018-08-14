@@ -31,7 +31,7 @@
       <img [src]="'https://image.tmdb.org/t/p/w400/' + filme.backdrop_path">
 
       <ion-card-content>
-        <p>{{ filme.overview }}</p>
+        <p>{{ filme.overview.substr(0,120) }}...</p>
       </ion-card-content>
 
       <ion-row>
