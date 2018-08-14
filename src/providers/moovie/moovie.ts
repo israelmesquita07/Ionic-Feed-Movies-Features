@@ -25,4 +25,8 @@ export class MoovieProvider {
     return this.http.get(this.urlAPI);
   }
 
+  public getLatestMovieDetalhes(filmeID) {
+    return this.http.get(this.baseUrl+`/movie/${filmeID}?api_key=`+this.chaveAPI+this.languageUrl);
+  }
+
 }
