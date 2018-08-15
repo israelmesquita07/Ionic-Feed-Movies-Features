@@ -1,8 +1,12 @@
-# Ionic-Simple-First-Project
+# Ionic-Feed-Movies-Resources
 
-First project using ionic. Not completed yet.
-I will complete this week.
+App criado para mostrar os vários recursos que o Ionic permite para os que os desenvolvedores possam construir apps incríveis!
 
-#Movie Details
-#Angular substring
-#Tableview infinita
+Possui um slider de introdução que trabalha com LocalStorage e só carrega se for a primeira vez que está carregando o app.
+
+Possui um feed de filmes com detalhes e um menu lateral.
+
+Aproveite!
+
+
+
